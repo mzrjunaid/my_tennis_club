@@ -1,0 +1,52 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'myglobal.css' %}">
+    <title>Testing</title>
+</head>
+
+<body>
+
+    {% with firstname="Tobias" %}
+    <h1>Hello {{ firstname }}, how are you?</h1>
+    {% endwith %}
+
+    {% with firstname="Mustafa" %}
+    <h1>Hello dear, {{ firstname }}</h1>
+    {% endwith %}
+
+    <ul>
+        {% for x in mymembers %}
+        <li>{{ x.firstname }}</li>
+        {% endfor %}
+    </ul>
+
+    <hr />
+
+    <p>The queryset object:</p>
+    {{ data }}
+
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+        </tr>
+        {% for x in data %}
+        <tr>
+            <td>{{ x.id }}</td>
+            <td>{{ x.firstname }}</td>
+            <td>{{ x.lastname }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <p>In views.py you can see what the fruits variable looks like.</p>
+</body>
+
+</html>
